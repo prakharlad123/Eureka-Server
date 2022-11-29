@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Organiser | Dashboard </title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="/webjars/AdminLTE/3.0.0/plugins/fontawesome-free/css/all.min.css">
+    <!-- IonIcons -->
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bbootstrap 4 -->
+    <link rel="stylesheet" href="/webjars/AdminLTE/3.0.0/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/webjars/AdminLTE/3.0.0/dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+    <!--    <div th:replace="organiser/fragments/navbar :: header"></div>-->
+    <!--    <div th:replace="organiser/fragments/sidenav :: mySidebar"></div>-->
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>The exam code generated is <span style="color: blue" th:text="${examCode}"></span></h1>
+
+                        <br><br>
+                        <h1>Manage Users</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active">Exam</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+
+
+                            <div class="card card-primary">
+                                <div class="card-body">
+                                    <form th:action="@{'/'+ ${examCode} + '/examUser/add'}" method="post" class="form-inline">
+                                        <div class="form-group p-2">
+                                            <label for="name" class="pr-2">Name:</label>
+                                            <input type="text" id="name" class="form-control" name="name">
+                                        </div>
+<!--                                        <input type="hidden" name="exam_id" th:value="${exam.getId()}">-->
+                                        <div class="form-group p-2">
+                                            <label for="email" class="pr-2">Email:</label>
+                                            <input type="text" id="email" class="form-control" name="email">
+                                        </div>
+                                        <div class="form-group p-2">
+                                            <label for="password" class="pr-2">Password:</label>
+                                            <input type="password" id="password" class="form-control" name="password">
+                                        </div>
+                                        <div class="form-group p-2">
+                                            <input type="submit" class="btn btn-primary" name="submit" value="Add User">
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+
+            </div>
+        </section>
+    </div>
+    <!--    <div th:replace="organiser/fragments/navbar :: footer"></div>-->
+
+
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="/webjars/AdminLTE/3.0.0/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="/webjars/AdminLTE/3.0.0/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- InputMask -->
+<script src="/webjars/AdminLTE/3.0.0/plugins/moment/moment.min.js"></script>
+<script src="/webjars/AdminLTE/3.0.0/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="/webjars/AdminLTE/3.0.0/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/webjars/AdminLTE/3.0.0/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/webjars/AdminLTE/3.0.0/dist/js/demo.js"></script>
+<script>
+    $.fn.datetimepicker.Constructor.Default = $.extend({}, $.fn.datetimepicker.Constructor.Default, {
+        icons: {
+            time: 'far fa-clock',
+            date: 'far fa-calendar',
+            up: 'fas fa-arrow-up',
+            down: 'fas fa-arrow-down',
+            previous: 'fas fa-chevron-left',
+            next: 'fas fa-chevron-right',
+            today: 'far fa-calendar-check-o',
+            clear: 'far fa-trash',
+            close: 'far fa-times'
+        } });
+
+    $('#datetimepicker1').datetimepicker({
+        format: 'DD/MM/YYYY h:mm A'
+    });
+</script>
+</body>
+</html>
+
